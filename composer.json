@@ -1,16 +1,20 @@
 {
-    "name": "pandawa/skeleton",
-    "description": "The higher laravel framework for enterprise application.",
-    "keywords": ["framework", "pandawa"],
+    "name": "naker/framework",
+    "description": "Kemnaker php framework based on laravel and pandawa.",
+    "keywords": ["framework", "pandawa", "naker"],
     "license": "MIT",
     "type": "project",
-    "minimum-stability": "dev",
     "require": {
         "php": ">=7.2",
+        "barryvdh/laravel-cors": "^0.11.0",
+        "borobudur/dci": "~0.1@dev",
+        "borobudur/exception": "~0.1@dev",
+        "borobudur/parameter": "~0.1@dev",
         "fideloper/proxy": "~4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
-        "pandawa/pandawa": "~0.1"
+        "lcobucci/jwt": "^4.0@dev",
+        "pandawa/pandawa": "~0.1@dev"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",
