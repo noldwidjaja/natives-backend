@@ -4,6 +4,8 @@
     "keywords": ["framework", "pandawa", "naker"],
     "license": "MIT",
     "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=7.2",
         "barryvdh/laravel-cors": "^0.11.0",
@@ -11,10 +13,9 @@
         "borobudur/exception": "~0.1@dev",
         "borobudur/parameter": "~0.1@dev",
         "fideloper/proxy": "~4.0",
-        "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "lcobucci/jwt": "^4.0@dev",
-        "pandawa/pandawa": "~0.1@dev"
+        "pandawa/pandawa": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",
@@ -31,8 +32,8 @@
         ],
         "psr-4": {
             "App\\": "app/laravel",
-            "Acme\\Api\\": "app/api/Acme",
-            "Acme\\Web\\": "app/web/Acme",
+            "Acme\\Api\\": "app/acme/Api",
+            "Acme\\Web\\": "app/acme/Web",
             "": "src/"
         }
     },
@@ -42,6 +43,9 @@
         }
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
         "laravel": {
             "dont-discover": [
             ]
