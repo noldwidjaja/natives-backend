@@ -1,0 +1,4 @@
+category:
+    type: resource
+    path: categories
+    rules: [category]

@@ -1,0 +1,3 @@
+role:
+    constraints:
+        name: required|string

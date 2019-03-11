@@ -1,0 +1,3 @@
+gender:
+    type: resource
+    path: genders

@@ -1,0 +1,4 @@
+type:
+    constraints:
+        name: "required|string"
+        category_id: "required|uuid|exists:categories,id"

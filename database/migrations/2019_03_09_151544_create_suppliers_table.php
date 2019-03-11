@@ -15,7 +15,7 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('company_name');
+            $table->string('name');
             $table->bigInteger('phone_number');
             $table->uuid('login_id');
             $table->foreign('login_id')->references('id')->on('logins');

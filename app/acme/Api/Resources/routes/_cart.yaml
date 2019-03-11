@@ -1,0 +1,4 @@
+cart:
+    type: resource
+    path: carts
+    rules: [cart]

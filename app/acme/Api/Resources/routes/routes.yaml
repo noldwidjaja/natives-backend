@@ -3,3 +3,55 @@ ping:
     methods: [get]
     path: ping
     presenter: ping
+
+cart:
+    type: group
+    children: _cart.yaml
+
+category:
+    type: group
+    children: _category.yaml
+
+customer:
+    type: group
+    children: _customer.yaml
+
+gender:
+    type: group
+    children: _gender.yaml
+
+image:
+    type: group
+    children: _image.yaml
+
+item:
+    type: group
+    children: _item.yaml
+
+login:
+    type: group
+    children: _login.yaml
+
+payment:
+    type: group
+    children: _payment.yaml
+
+role:
+    type: group
+    children: _role.yaml
+
+supplier:
+    type: group
+    children: _supplier.yaml
+
+transaction:
+    type: group
+    children: _transaction.yaml
+
+type:
+    type: group
+    children: _type.yaml
+
+wishlist:
+    type: group
+    children: _wishlist.yaml

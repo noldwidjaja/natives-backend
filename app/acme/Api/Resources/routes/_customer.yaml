@@ -1,0 +1,3 @@
+customer:
+    type: resource
+    path: customers

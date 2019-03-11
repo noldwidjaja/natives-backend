@@ -1,0 +1,4 @@
+role:
+    type: resource
+    path: roles
+    rules: [role]
