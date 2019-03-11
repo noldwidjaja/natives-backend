@@ -1,0 +1,6 @@
+payment:
+    constraints:
+        payment_method: "required|string"
+        total_price: "required|integer"
+        payment_date: "required|date"
+        transaction_id: "required|uuid|exists:transactions,id"

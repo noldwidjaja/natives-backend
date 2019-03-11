@@ -1,3 +1,4 @@
 payment:
     type: resource
     path: payments
+    rules: [payment]

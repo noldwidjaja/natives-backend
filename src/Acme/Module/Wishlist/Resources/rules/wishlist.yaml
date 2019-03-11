@@ -1,0 +1,3 @@
+wishlist:
+    constraints:
+        customer_id: "required|uuid|exists:customers,id"

@@ -1,3 +1,4 @@
 image:
     type: resource
     path: images
+    rules: [image]

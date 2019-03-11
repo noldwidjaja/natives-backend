@@ -1,3 +1,4 @@
 login:
     type: resource
     path: logins
+    rules: [login]

@@ -1,0 +1,5 @@
+supplier:
+    constraints:
+        name: "required|string"
+        phone_number: "required|integer"
+        login_id: "required|uuid|exists:logins,id"

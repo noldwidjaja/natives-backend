@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->bigInteger('price');
             $table->integer('stock');
+            $table->text('description');
             $table->uuid('gender_id');
             $table->uuid('type_id');
             $table->uuid('supplier_id');

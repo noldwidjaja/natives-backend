@@ -1,0 +1,5 @@
+transaction:
+    constraints:
+        total_price: "required|integer"
+        status: "required|boolean"
+        customer_id: "required|uuid|exists:customers,id"

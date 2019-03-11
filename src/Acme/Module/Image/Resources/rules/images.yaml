@@ -1,0 +1,4 @@
+images:
+    constraints:
+        name: "required|string"
+        directory: "required|string"

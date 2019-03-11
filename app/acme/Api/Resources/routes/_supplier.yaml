@@ -1,3 +1,4 @@
 supplier:
     type: resource
     path: suppliers
+    rules: [supplier]

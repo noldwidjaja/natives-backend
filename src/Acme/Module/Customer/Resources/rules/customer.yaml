@@ -1,0 +1,8 @@
+customer:
+    constraints:
+        first_name: "required|string"
+        last_name: "required|string"
+        gender_id: "required|uuid|exists:genders,id"
+        date_of_birth: "required|date"
+        phone_number: "required|integer"
+        login_id: "required|uuid|exists:logins,id"

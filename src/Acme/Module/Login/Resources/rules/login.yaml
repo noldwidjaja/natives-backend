@@ -1,0 +1,5 @@
+login:
+    constraints:
+        email: "required|email"
+        password: "required|string"
+        role_id: "required|uuid|exists:roles,id"
