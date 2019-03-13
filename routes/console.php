@@ -68,4 +68,31 @@ final class Acme{$table_name}Module extends AbstractModule
     file_put_contents("app/acme/Api/Resources/routes/_{$table_name}.yaml","{$table_name}:
 type: resource
 path: {$table_name}s");
+    $this->info("{$table_name} model and repository has been created successfully");
 })->describe('Make Model and Repository folders and files');
+
+Artisan::command('seeder {table_name}', function ($table_name) {
+    file_put_contents("database/seeds/{$table_name}TableSeeder.php","<?php
+
+use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+
+class {$table_name}TableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        \$faker = Faker::create();
+        DB::table('{$table_name}')->insert([ 
+            'id' => \$faker->uuid(),
+            'created_at' => date(\"Y-m-d H:i:s\"),
+            'updated_at' => date(\"Y-m-d H:i:s\")
+            ]);
+    }
+}");
+    $this->info("{$table_name} seeder created successfully");
+});
