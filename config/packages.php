@@ -17,6 +17,7 @@ return [
     Acme\Module\Transaction\AcmeTransactionModule::class,
     Acme\Module\Type\AcmeTypeModule::class,
     Acme\Module\Wishlist\AcmeWishlistModule::class,
+    Acme\Module\Bought\AcmeBoughtModule::class,
     /*
      * Application Modules
      */

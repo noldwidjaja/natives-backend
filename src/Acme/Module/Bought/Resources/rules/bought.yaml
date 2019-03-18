@@ -1,0 +1,5 @@
+bought:
+    constraints:
+        transaction_id: "required|uuid|exists:transactions,id"
+        item_id: "required|uuid|exists:items,id"
+        amount: "required|integer"

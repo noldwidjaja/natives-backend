@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Acme\Module\Role\Model\Role;
+use Acme\Module\Login\Model\Login;
 
 class SuppliersTableSeeder extends Seeder
 {
@@ -13,11 +15,18 @@ class SuppliersTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        DB::table('Suppliers')->insert([ 
-            'id' => $faker->uuid(),
-            'company_name' => $faker->,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
+        $role = Role::all()->where('name','supplier')->pluck('id')->toArray();
+        $logins = Login::all()->where('role_id',$role[0])->pluck('id')->toArray();
+        foreach(range(0,4) as $index){
+            DB::table('Suppliers')->insert([ 
+                'id' => $faker->uuid,
+                'name' => $faker->company,
+                'phone_number' => $faker->e164PhoneNumber,
+                'login_id' => $logins[$index],
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]);
+        }
+        
     }
 }

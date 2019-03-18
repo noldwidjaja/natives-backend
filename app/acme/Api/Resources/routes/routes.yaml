@@ -55,3 +55,7 @@ type:
 wishlist:
     type: group
     children: _wishlist.yaml
+
+bought:
+    type: group
+    children: _bought.yaml

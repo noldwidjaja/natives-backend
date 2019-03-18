@@ -2,3 +2,5 @@ customer:
     type: resource
     path: customers
     rules: [customer]
+    # options: 
+        # withs: [transaction]

@@ -1,0 +1,4 @@
+bought:
+    type: resource
+    path: boughts
+    rules: [bought]

@@ -1,4 +1,4 @@
 cart:
     constraints:
         customer_id: "required|uuid|exists:customers,id"
-        item_quantity: "integer"
+        item_quantity: "required|integer"
