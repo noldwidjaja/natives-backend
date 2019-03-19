@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -29,19 +29,6 @@ class CustomersTableSeeder extends Seeder
                 'date_of_birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'phone_number' => $faker->e164PhoneNumber,
                 'user_id' => $users[$index],
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")
-            ]);
-            DB::table('Carts')->insert([
-                'id' => $faker->uuid,
-                'customer_id' => $id,
-                'item_quantity' => 0,
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")
-            ]);
-            DB::table('Wishlists')->insert([
-                'id' => $faker->uuid,
-                'customer_id' => $id,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);

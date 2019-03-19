@@ -18,4 +18,11 @@ class Payment extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+	public function transaction()
+    {
+        return $this->belongsTo('App\Transaction');
+    }
 }
+
+

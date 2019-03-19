@@ -31,11 +31,13 @@ class ImageController extends Controller
         $request->validate([
             'name' => 'required|string',
             'directory' => 'required|string',
+            'item_id' => 'required|uuid|exists:items,id',
         ]);
 
         $image = new Image([
             'name' => $data['name'],
             'directory' => $data['directory'],
+            'item_id' => $data['item_id'],
         ]);
         $image->save();
 
@@ -67,10 +69,12 @@ class ImageController extends Controller
         $request->validate([
             'name' => 'required|string',
             'directory' => 'required|string',
+            'item_id' => 'required|uuid|exists:items,id',
         ]);
 
         $image->name = $data['name'];
         $image->directory = $data['directory'];
+        $image->item_id = $data['item_id']; 
         $image->save();
 
         return $image;

@@ -32,12 +32,14 @@ class TransactionController extends Controller
             'total_price' => 'required|numeric',
             'status' => 'required|boolean',
             'customer_id' => 'required|uuid|exists:customers,id',
+            'supplier_id' => 'required|uuid|exists:suppliers,id',
         ]);
 
         $transaction = new Transaction([
             'total_price' => $data['total_price'],
             'status' => $data['status'],
             'customer_id' => $data['customer_id'],
+            'supplier_id' => $data['supplier_id'],
         ]);
         $transaction->save();
 
@@ -70,11 +72,14 @@ class TransactionController extends Controller
             'total_price' => 'required|numeric',
             'status' => 'required|boolean',
             'customer_id' => 'required|uuid|exists:customers,id',
+            'supplier_id' => 'required|uuid|exists:suppliers,id',
+
         ]);
 
         $transaction->total_price = $data['total_price'];
         $transaction->status = $data['status'];
         $transaction->customer_id = $data['customer_id'];
+        $transaction->supplier_id = $data['supplier_id'];
         $transaction->save();
 
         return $transaction;

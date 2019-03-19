@@ -16,4 +16,9 @@ class Type extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function category()
+    {
+    	return $this->belongsTo('App\Category');
+    }
 }
