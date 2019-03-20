@@ -14,8 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
-        return response()->json($roles);
+        $roles = Role::with('users')->get()->toArray();
+        return $roles;
     }
 
     /**
@@ -48,6 +48,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        $role = Role::with('users')->where('id',$role->id)->get()->toArray();
         return $role;
     }
 

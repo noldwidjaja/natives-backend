@@ -22,4 +22,9 @@ class Cart extends Model
     {
     	return $this->belongsTo('App\Customer');
     }
+
+    public function item()
+    {
+        return $this->belongsTo('App\Item');
+    }
 }

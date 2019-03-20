@@ -27,6 +27,7 @@ class TransactionsTableSeeder extends Seeder
                 'id' => $id,
                 'total_price' => $price,
                 'status' => $bool,
+                'shipping_address' => $faker->address,
                 'customer_id' => $faker->randomElement($customers),
                 'supplier_id' => $faker->randomElement($suppliers),
                 'created_at' => date("Y-m-d H:i:s"),
@@ -44,6 +45,7 @@ class TransactionsTableSeeder extends Seeder
                 DB::table('Payments')->insert([
                     'id' => $faker->uuid,
                     'payment_method' => $faker->creditCardType,
+                    'billing_address' => $faker->address,
                     'total_price' => $price,
                     'payment_date' => date("Y-m-d H:i:s"),
                     'transaction_id' => $id,

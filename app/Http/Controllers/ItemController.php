@@ -14,8 +14,12 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
-        return response()->json($items);
+        $items = Item::with([
+            'gender:id,name',
+            'type:id,name',
+            'supplier:id,name',
+        ])->get()->toArray();
+        return $items;
     }
 
     /**
@@ -59,6 +63,11 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
+        $item = Item::with([
+            'gender:id,name',
+            'type:id,name',
+            'supplier:id,name',
+        ])->where('id',$item->id)->get()->toArray();
         return $item;
     }
 

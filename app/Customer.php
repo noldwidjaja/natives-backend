@@ -30,4 +30,14 @@ class Customer extends Model
     {
         return $this->hasOne('App\Wishlist');
     }
+
+    public function gender()
+    {
+        return $this->belongsTo('App\Gender');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

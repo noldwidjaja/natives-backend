@@ -14,8 +14,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::all();
-        return response()->json($types);
+        $types = Type::with('items')->get()->toArray();
+        return $types;
     }
 
     /**
@@ -50,6 +50,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
+        $type = Type::with('items')->where('id',$type->id)->get()->toArray();
         return $type;
     }
 

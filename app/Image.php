@@ -20,6 +20,6 @@ class Image extends Model
 
     public function item()
     {
-    	return $this->hasOne('App\Item');
+    	return $this->belongsTo('App\Item');
     }
 }
