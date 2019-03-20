@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Customer;
 use App\Item;
+use App\Supplier;
 
 class TransactionsTableSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class TransactionsTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $customers = Customer::all()->pluck('id');
+        $suppliers = Supplier::all()->pluck('id');
         $items = Item::all()->pluck('id');
         foreach(range(0,10) as $index){
             $bool = $faker->boolean;
@@ -25,7 +27,9 @@ class TransactionsTableSeeder extends Seeder
                 'id' => $id,
                 'total_price' => $price,
                 'status' => $bool,
+                'shipping_address' => $faker->address,
                 'customer_id' => $faker->randomElement($customers),
+                'supplier_id' => $faker->randomElement($suppliers),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
@@ -41,6 +45,7 @@ class TransactionsTableSeeder extends Seeder
                 DB::table('Payments')->insert([
                     'id' => $faker->uuid,
                     'payment_method' => $faker->creditCardType,
+                    'billing_address' => $faker->address,
                     'total_price' => $price,
                     'payment_date' => date("Y-m-d H:i:s"),
                     'transaction_id' => $id,

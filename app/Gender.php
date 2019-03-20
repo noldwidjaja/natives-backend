@@ -15,4 +15,9 @@ class Gender extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function customers()
+    {
+    	return $this->hasMany('App\Customer');
+    }
 }

@@ -16,8 +16,14 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return response()->json($customers);
+        $customers = Customer::with([
+            'cart',
+            'wishlist',
+            'gender:id,name',
+            'user:id,email,role_id',
+            'user.role:id,name',
+        ])->get()->toArray();
+        return $customers;
     }
 
     /**
@@ -71,6 +77,11 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
+        $customer = Customer::with([
+            'cart',
+            'wishlist',
+            'gender:id,name'
+        ])->where('id',$customer->id)->get()->toArray();
         return $customer;
     }
 
@@ -101,7 +112,7 @@ class CustomerController extends Controller
         $customer->user_id = $data['user_id'];
         $customer->save();
 
-        return $customer
+        return $customer;
     }
 
     /**

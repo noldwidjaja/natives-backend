@@ -17,6 +17,8 @@ class CreateImagesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->text('directory');
+            $table->uuid('item_id');
+            $table->foreign('item_id')->references('id')->on('items');
             $table->timestamps();
         });
     }

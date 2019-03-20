@@ -10,10 +10,21 @@ class Cart extends Model
 
     protected $fillable = [
     	'customer_id',
-    	'item_quantity'
+        'item_id',
+    	'item_quantity',
     ];
 
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function customer()
+    {
+    	return $this->belongsTo('App\Customer');
+    }
+
+    public function item()
+    {
+        return $this->belongsTo('App\Item');
+    }
 }

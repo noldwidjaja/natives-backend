@@ -19,8 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return response()->json($users);
+        $users = User::with('role')->get()->toArray();
+        return $users;
     }
 
     /**
@@ -31,6 +31,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $users = User::with('role')->where('id',$id)->get()->toArray();
+        return $users;
     }
 }

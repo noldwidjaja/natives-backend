@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password',
+        'email', 'password','role_id',
     ];
 
     /**
@@ -40,4 +40,9 @@ class User extends Authenticatable
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
 }

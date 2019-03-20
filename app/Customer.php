@@ -20,4 +20,24 @@ class Customer extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function cart()
+    {
+        return $this->hasOne('App\Cart');
+    }
+
+    public function wishlist()
+    {
+        return $this->hasOne('App\Wishlist');
+    }
+
+    public function gender()
+    {
+        return $this->belongsTo('App\Gender');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

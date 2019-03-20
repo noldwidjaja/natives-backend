@@ -14,8 +14,8 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        $wishlists = Wishlist::all();
-        return response()->json($wishlists);
+        $wishlists = Wishlist::with('item')->get()->toArray();
+        return $wishlists;
     }
 
     /**
@@ -26,6 +26,7 @@ class WishlistController extends Controller
      */
     public function show(Wishlist $wishlist)
     {
+        $wishlists = Wishlist::with('item')->where('id',$wishlist->id)->get()->toArray();
         return $wishlist;
     }
 }

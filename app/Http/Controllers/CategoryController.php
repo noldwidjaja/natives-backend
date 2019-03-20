@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return response()->json($categories);
+        $categories = Category::with('types')->get()->toArray();
+        return $categories;
     }
 
     /**
@@ -48,6 +48,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        $category = Category::with('types')->where('id',$category->id)->get()->toArray();
         return $category;
     }
 

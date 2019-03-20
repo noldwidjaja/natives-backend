@@ -30,6 +30,7 @@ class PaymentController extends Controller
 
         $request->validate([
             'payment_method' => 'required|string',
+            'billing_address' => 'required|string',
             'total_price' => 'required|numeric',
             'payment_date' => 'required|date',
             'transaction_id' => 'required|uuid|exists:transactions,id',
@@ -37,6 +38,7 @@ class PaymentController extends Controller
 
         $payment = new Payment([
             'payment_method' => $data['payment_method'],
+            'billing_address' => $data['billing_address'],
             'total_price' => $data['total_price'],
             'payment_date' => $data['payment_date'],
             'transaction_id' => $data['transaction_id'],
@@ -70,12 +72,14 @@ class PaymentController extends Controller
 
         $request->validate([
             'payment_method' => 'required|string',
+            'billing_address' => 'required|string',
             'total_price' => 'required|numeric',
             'payment_date' => 'required|date',
             'transaction_id' => 'required|uuid|exists:transactions,id',
         ]);
 
         $payment->payment_method = $data['payment_method'];
+        $payment->billing_address = $data['billing_address'];  
         $payment->total_price = $data['total_price'];
         $payment->payment_date = $data['payment_date'];
         $payment->transaction_id = $data['transaction_id'];

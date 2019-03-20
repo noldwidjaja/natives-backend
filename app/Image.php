@@ -10,10 +10,16 @@ class Image extends Model
 
     protected $fillable = [
     	'name',
-    	'directory'
+    	'directory',
+        'item_id',
     ];
 
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function item()
+    {
+    	return $this->belongsTo('App\Item');
+    }
 }

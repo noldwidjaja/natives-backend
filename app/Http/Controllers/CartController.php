@@ -14,8 +14,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        $carts = Cart::all();
-        return response()->json($carts);
+        $carts = Cart::with('item')->get()->toArray();
+        return $carts;
     }
 
     /**
@@ -26,6 +26,7 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        return $cart
+        $cart = Cart::with('item')->where('id',$cart->id)->get()->toArray();
+        return $cart;
     }
 }

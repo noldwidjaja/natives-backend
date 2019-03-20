@@ -15,4 +15,9 @@ class Role extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 }

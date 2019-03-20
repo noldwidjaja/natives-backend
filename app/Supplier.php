@@ -17,4 +17,9 @@ class Supplier extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public function items()
+    {
+    	return $this->hasMany('App\Item');
+    }
 }
