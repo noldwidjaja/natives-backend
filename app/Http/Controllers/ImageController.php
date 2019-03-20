@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -25,19 +26,19 @@ class ImageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $data = $request->json()->all();
-        
+
         $request->validate([
-            'name' => 'required|string',
-            'directory' => 'required|string',
             'item_id' => 'required|uuid|exists:items,id',
+            'picture' => 'required|mimes:jpg,png,jpeg|max:2048',
         ]);
 
+        $photo_path = Storage::putFile('public/uploads/images', $request->file('picture'));
+
         $image = new Image([
-            'name' => $data['name'],
-            'directory' => $data['directory'],
-            'item_id' => $data['item_id'],
+            'directory' => $photo_path,
+            'item_id' => $request->item_id,
         ]);
         $image->save();
 
@@ -67,12 +68,12 @@ class ImageController extends Controller
         $data = $request->json()->all();
         
         $request->validate([
-            'name' => 'required|string',
-            'directory' => 'required|string',
             'item_id' => 'required|uuid|exists:items,id',
+            'picture' => 'required|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        $image->name = $data['name'];
+        $photo_path = Storage::putFile('public/uploads/images', $request->file('picture'));
+
         $image->directory = $data['directory'];
         $image->item_id = $data['item_id']; 
         $image->save();
