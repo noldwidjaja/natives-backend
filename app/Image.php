@@ -9,8 +9,7 @@ class Image extends Model
     use Uuids;
 
     protected $fillable = [
-    	'name',
-    	'directory',
+        'directory',
         'item_id',
     ];
 

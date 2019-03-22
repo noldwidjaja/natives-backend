@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable implements JWTSubject, MustVerifyEmail
+{ 
     use Notifiable;
+    use Uuids;
 
     /**
      * The attributes that are mass assignable.
@@ -37,12 +39,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public $incrementing = false;
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
 
-    protected $keyType = 'string';
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+    public function setPasswordAttribute($password)
+    {
+        if ( !empty($password) ) {
+            $this->attributes['password'] = bcrypt($password);
+        }
+    }   
 
     public function role()
     {
         return $this->belongsTo('App\Role');
     }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\EmailVerification);
+    }
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+
 }
