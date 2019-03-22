@@ -18,7 +18,7 @@ class ItemController extends Controller
             'gender:id,name',
             'type:id,name',
             'supplier:id,name',
-            'image:id,name',
+            'image',
         ])->get()->toArray();
         return $items;
     }
