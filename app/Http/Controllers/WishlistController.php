@@ -68,8 +68,8 @@ class WishlistController extends Controller
             'item_id' => 'required|uuid|exists:items,id',
         ]);
 
-        $wishlist->customer_id => $data['customer_id'];
-        $wishlist->item_id => $data['item_id'];
+        $wishlist->customer_id = $data['customer_id'];
+        $wishlist->item_id = $data['item_id'];
         $wishlist->save();
 
         return $wishlist;

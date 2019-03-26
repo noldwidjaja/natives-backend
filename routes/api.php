@@ -16,3 +16,28 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/register', 'AuthController@register');
+
+Route::post('/login', 'AuthController@login');
+
+Route::post('/logout', 'AuthController@logout');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::apiResources([
+	'customers' => 'CustomerController',
+	'categories' => 'CategoryController',
+	'genders' => 'GenderController',
+	'images' => 'ImageController',
+	'items' => 'ItemController',
+	'payments' => 'PaymentController',
+	'roles' => 'RoleController',
+	'suppliers' => 'SupplierController',
+	'transactions' => 'TransactionController',
+	'types' => 'TypeController',
+]);
+
+Route::apiResource('users','UserController')->only(['index','show']);
+Route::apiResource('carts','CartController')->only(['index','show']);
+Route::apiResource('wishlists','WishlistController')->only(['index','show']);
