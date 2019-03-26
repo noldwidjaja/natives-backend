@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class AuthController extends Controller
             'username' => $request->username,
             'email'    => $request->email,
             'password' => $request->password,
-            'role_id' => $request->role_id,
+            'role_id' => Role::where('name','customer')->get()->pluck('id')->first(),
          ]);
         return $user;
     }
