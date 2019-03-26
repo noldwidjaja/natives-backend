@@ -19,7 +19,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::with('items')->get()->toArray();
+        $types = Type::with([
+            'items',
+            'items.supplier:id,name'
+        ])->get()->toArray();
         return $types;
     }
 
