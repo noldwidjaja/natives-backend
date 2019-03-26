@@ -58,7 +58,9 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        $type = Type::with('items')->where('id',$type->id)->get()->toArray();
+        $type = Type::with([
+            'items',
+            'items.supplier:id,name'])->where('id',$type->id)->get()->toArray();
         return $type;
     }
 
