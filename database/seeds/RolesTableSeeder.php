@@ -20,7 +20,7 @@ class RolesTableSeeder extends Seeder
         ];
 
         foreach($contents as $content) {
-            DB::table('Roles')->insert([
+            DB::table('roles')->insert([
                 'id' => $faker->uuid,
                 'name' => $content,
                 'created_at' => date("Y-m-d H:i:s"),

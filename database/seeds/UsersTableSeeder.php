@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
         $admin = Role::all()->where('name','admin')->pluck('id')->toArray();
         DB::table('users')->insert([ 
                 'id' => $faker->uuid,
+                'username' => $faker->username,
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('secret'),
                 'role_id' => $admin[0],
@@ -28,6 +29,7 @@ class UsersTableSeeder extends Seeder
         foreach(range(0,9) as $index){
             DB::table('users')->insert([ 
                 'id' => $faker->uuid,
+                'username' => $faker->username,
                 'email' => $faker->email,
                 'password' => bcrypt('secret'),
                 'role_id' => $supplier[0],
@@ -36,6 +38,7 @@ class UsersTableSeeder extends Seeder
             ]);
             DB::table('users')->insert([ 
                 'id' => $faker->uuid,
+                'username' => $faker->username,
                 'email' => $faker->email,
                 'password' => $faker->password,
                 'role_id' => $customer[0],

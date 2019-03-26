@@ -18,7 +18,7 @@ class SuppliersTableSeeder extends Seeder
         $role = Role::all()->where('name','supplier')->pluck('id')->toArray();
         $users = User::all()->where('role_id',$role[0])->pluck('id')->toArray();
         foreach(range(0,4) as $index){
-            DB::table('Suppliers')->insert([ 
+            DB::table('suppliers')->insert([ 
                 'id' => $faker->uuid,
                 'name' => $faker->company,
                 'phone_number' => $faker->e164PhoneNumber,

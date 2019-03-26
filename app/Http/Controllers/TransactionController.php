@@ -37,7 +37,6 @@ class TransactionController extends Controller
             'status' => 'required|boolean',
             'shipping_address' => 'required|string',
             'customer_id' => 'required|uuid|exists:customers,id',
-            'supplier_id' => 'required|uuid|exists:suppliers,id',
         ]);
 
         $transaction = new Transaction([
@@ -45,7 +44,6 @@ class TransactionController extends Controller
             'status' => $data['status'],
             'shipping_address' => $data['shipping_address'],
             'customer_id' => $data['customer_id'],
-            'supplier_id' => $data['supplier_id'],
         ]);
         $transaction->save();
 
@@ -63,7 +61,6 @@ class TransactionController extends Controller
         $transaction = Transaction::with([
             'payment',
             'customer',
-            'supplier', 
         ])->where('id',$transaction->id)->get()->toArray();
         return $transaction;
     }
@@ -83,7 +80,6 @@ class TransactionController extends Controller
             'total_price' => 'required|numeric',
             'status' => 'required|boolean',
             'customer_id' => 'required|uuid|exists:customers,id',
-            'supplier_id' => 'required|uuid|exists:suppliers,id',
 
         ]);
 
@@ -91,7 +87,6 @@ class TransactionController extends Controller
         $transaction->status = $data['status'];
         $transaction->shipping_address = $data['shipping_address'];
         $transaction->customer_id = $data['customer_id'];
-        $transaction->supplier_id = $data['supplier_id'];
         $transaction->save();
 
         return $transaction;

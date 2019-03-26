@@ -21,7 +21,7 @@ class ItemsTableSeeder extends Seeder
         $types = Type::all()->pluck('id')->toArray();
 
         foreach(range(0,49) as $index){
-            DB::table('Items')->insert([ 
+            DB::table('items')->insert([ 
                 'id' => $faker->uuid(),
                 'gender_id' => $faker->randomElement($genders),
                 'type_id' => $faker->randomElement($types),
