@@ -21,7 +21,8 @@ class TypeController extends Controller
     {
         $types = Type::with([
             'items',
-            'items.supplier:id,name'
+            'items.supplier:id,name',
+            'items.image',
         ])->get()->toArray();
         return $types;
     }
@@ -60,7 +61,9 @@ class TypeController extends Controller
     {
         $type = Type::with([
             'items',
-            'items.supplier:id,name'])->where('id',$type->id)->get()->toArray();
+            'items.supplier:id,name',
+            'items.image',
+        ])->where('id',$type->id)->get()->toArray();
         return $type;
     }
 
