@@ -11,11 +11,11 @@ class AuthController extends Controller
     public function create(Request $request)
     {
         $user = User::create([
-             'email'    => $request->email,
-             'password' => $request->password,
-             'role_id' => $request->role_id,
+            'username' => $request->username,
+            'email'    => $request->email,
+            'password' => $request->password,
+            'role_id' => $request->role_id,
          ]);
-
         return $user;
     }
 

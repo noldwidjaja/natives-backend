@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -55,18 +60,7 @@ class CustomerController extends Controller
         ]);
         $customer->save();
 
-        $cart = new Cart([
-            'customer_id' => $customer->id,
-            'item_quantity' => 0,
-        ]);
-        $cart->save();
-
-        $wishlist = new Wishlist([
-            'customer_id' => $customer->id,
-        ]);
-        $wishlist->save();
-
-        return [$customer,$cart,$wishlist];
+        return $customer;
     }
 
     /**

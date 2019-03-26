@@ -34,7 +34,7 @@ class ImageController extends Controller
             'picture' => 'required|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        $photo_path = Storage::putFile('public/uploads/images', $request->file('picture'));
+        $photo_path = Storage::url(Storage::putFile('public/uploads/images', $request->file('picture')));
 
         $image = new Image([
             'directory' => $photo_path,
@@ -72,7 +72,7 @@ class ImageController extends Controller
             'picture' => 'required|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        $photo_path = Storage::putFile('public/uploads/images', $request->file('picture'));
+        $photo_path = Storage::url(Storage::putFile('public/uploads/images', $request->file('picture')));
 
         $image->directory = $data['directory'];
         $image->item_id = $data['item_id']; 

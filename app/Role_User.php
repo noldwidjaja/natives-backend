@@ -4,20 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Role_User extends Model
 {
     use Uuids;
 
     protected $fillable = [
-    	'name'
+    	'role_id',
+    	'user_id'
     ];
 
     public $incrementing = false;
 
     protected $keyType = 'string';
-
-    public function users()
-    {
-      return $this->belongsToMany(User::class);
-    }
 }

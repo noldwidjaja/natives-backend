@@ -23,17 +23,16 @@ class TransactionsTableSeeder extends Seeder
             $bool = $faker->boolean;
             $id = $faker->uuid;
             $price = $faker->numberBetween($min = 100000,$max = 2000000);
-            DB::table('Transactions')->insert([ 
+            DB::table('transactions')->insert([ 
                 'id' => $id,
                 'total_price' => $price,
                 'status' => $bool,
                 'shipping_address' => $faker->address,
                 'customer_id' => $faker->randomElement($customers),
-                'supplier_id' => $faker->randomElement($suppliers),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
-            DB::table('Boughts')->insert([
+            DB::table('boughts')->insert([
                     'id' => $faker->uuid,
                     'transaction_id' => $id,
                     'item_id' => $faker->randomElement($items),
@@ -42,7 +41,7 @@ class TransactionsTableSeeder extends Seeder
                     'updated_at' => date("Y-m-d H:i:s")
             ]);
             if($bool == True){
-                DB::table('Payments')->insert([
+                DB::table('payments')->insert([
                     'id' => $faker->uuid,
                     'payment_method' => $faker->creditCardType,
                     'billing_address' => $faker->address,

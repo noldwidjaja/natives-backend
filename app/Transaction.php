@@ -13,7 +13,6 @@ class Transaction extends Model
     	'status',
         'shipping_address',
     	'customer_id',
-        'supplier_id',
     ];
 
     public $incrementing = false;
@@ -30,8 +29,8 @@ class Transaction extends Model
         return $this->belongsTo('App\Customer');
     }
 
-    public function supplier()
+    public function boughts()
     {
-        return $this->belongsTo('App\Supplier');
+        return $this->hasMany('App\Bought');
     }
 }

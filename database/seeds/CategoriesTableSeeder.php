@@ -51,14 +51,14 @@ class CategoriesTableSeeder extends Seeder
         ];
         foreach(range(0,3) as $index) {
             $id = $faker->uuid;
-            DB::table('Categories')->insert([
+            DB::table('categories')->insert([
                 'id' => $id,
                 'name' => $contents[$index],
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
             foreach(range(0,4) as $content){
-                DB::table('Types')->insert([
+                DB::table('types')->insert([
                     'id' => $faker->uuid,
                     'name' => $types_content[$index][$content],
                     'category_id' => $id,

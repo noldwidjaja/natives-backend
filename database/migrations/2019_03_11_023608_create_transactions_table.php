@@ -19,9 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->boolean('status');
             $table->string('shipping_address');
             $table->uuid('customer_id');
-            $table->uuid('supplier_id');
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->timestamps();
         });
     }

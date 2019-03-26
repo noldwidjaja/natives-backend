@@ -19,7 +19,7 @@ class GendersTableSeeder extends Seeder
             'none'
         ];
         foreach($contents as $content){
-            DB::table('Genders')->insert([
+            DB::table('genders')->insert([
                 'id' => $faker->uuid,
                 'name' => $content,
                 'created_at' => date("Y-m-d H:i:s"),

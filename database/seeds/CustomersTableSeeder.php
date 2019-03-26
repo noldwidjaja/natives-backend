@@ -21,7 +21,7 @@ class CustomersTableSeeder extends Seeder
         $faker = Faker::create();
         foreach(range(0,4) as $index){
             $id = $faker->uuid;
-            DB::table('Customers')->insert([ 
+            DB::table('customers')->insert([ 
                 'id' => $id,
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
