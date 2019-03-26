@@ -41,3 +41,5 @@ Route::apiResources([
 Route::apiResource('users','UserController')->only(['index','show']);
 Route::apiResource('carts','CartController')->only(['index','show']);
 Route::apiResource('wishlists','WishlistController')->only(['index','show']);
+
+Route::get('/userdata','UserController@data');

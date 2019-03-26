@@ -10,7 +10,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin');
+        $this->middleware('role:admin')->except('data');
     }
 
     /**
@@ -34,5 +34,11 @@ class UserController extends Controller
     {
         $users = User::with('role')->where('id',$id)->get()->toArray();
         return $users;
+    }
+
+    public function data()
+    {
+        $user = auth()->user();
+        return $user;
     }
 }
