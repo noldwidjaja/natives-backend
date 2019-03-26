@@ -21,8 +21,9 @@ class ItemsTableSeeder extends Seeder
         $types = Type::all()->pluck('id')->toArray();
 
         foreach(range(0,49) as $index){
+            $id = $faker->uuid;
             DB::table('items')->insert([ 
-                'id' => $faker->uuid(),
+                'id' => $id,
                 'gender_id' => $faker->randomElement($genders),
                 'type_id' => $faker->randomElement($types),
                 'name' => $faker->name,
@@ -32,6 +33,11 @@ class ItemsTableSeeder extends Seeder
                 'supplier_id' => $faker->randomElement($suppliers),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
+            ]);
+            DB::table('images')->insert([
+                'id' => $faker->uuid,
+                'directory' => $faker->imageUrl($width = 1000, $height = 1000),
+                'item_id' => $id,
             ]);
         }
     }
