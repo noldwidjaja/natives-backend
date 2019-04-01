@@ -70,6 +70,16 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 	  return $this->belongsTo('App\Role');
 	}
 
+	public function customer_profile()
+	{
+		return $this->hasOne('App\Customer');
+	}
+
+	public function supplier_profile()
+	{
+		return $this->hasOne('App\Supplier');
+	}
+
 	public function authorizeRoles($roles)
 	{
 	  if ($this->hasAnyRole($roles)) {
@@ -97,6 +107,22 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 	public function hasRole($role)
 	{
 	  if ($this->role()->where('name', $role)->first()) {
+		return true;
+	  }
+	  return false;
+	}
+
+	public function isCustomer()
+	{
+		if ($this->customer_profile()->first()) {
+		return true;
+	  }
+	  return false;
+	}
+
+	public function isSupplier()
+	{
+		if ($this->supplier_profile()->first()) {
 		return true;
 	  }
 	  return false;
