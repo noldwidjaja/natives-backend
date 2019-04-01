@@ -38,7 +38,7 @@ Basically, all tables have their own CRUD in the controller and routes are provi
 /api/logout
 ```
 
-###Table Related
+### Table Related
 
 Our system has 13 tables. 1 of them is users table.
 All of these tables can be used in the route /api/{plural_tablename}.
