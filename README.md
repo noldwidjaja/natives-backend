@@ -1,8 +1,8 @@
-#Natives Backend
+# Natives Backend
 
 This is the backend of our project which serves as API.
 
-##Getting Started
+## Getting Started
 
 Steps to install and making it live.
 ```
@@ -17,7 +17,7 @@ php artisan db:seed
 php artisan db:seed --class=BaseTableSeeder
 ```
 
-##Existing Routes 
+## Existing Routes 
 
 All routes exists in the routes/api.php
 Basically, all tables have their own CRUD in the controller and routes are provided.
