@@ -11,7 +11,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:admin')->except('data');
-        $this->middleware('role:supplier')->only('supplier');
+        // $this->middleware('role:supplier')->only('supplier');
     }
 
     /**

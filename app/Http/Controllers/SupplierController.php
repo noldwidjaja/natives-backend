@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Supplier;
+use App\User;
+use App\Item;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -10,6 +12,7 @@ class SupplierController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['index','show']]);
+        $this->middleware('role:supplier')->only('supplier');
     }
     
     /**
@@ -89,5 +92,33 @@ class SupplierController extends Controller
     {
         $supplier->delete();
         return "Deleted";
+    }
+
+    public function createItem(Request $request)
+    {
+        $user = auth()->user();
+        $supplier = User::find($user->id)->supplier_profile->id;
+        $data = $request->json()->all();
+        $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|integer',
+            'stock' => 'required|integer',
+            'description' => 'required|string',
+            'gender_id' => 'required|uuid|exists:genders,id',
+            'type_id' => 'required|uuid|exists:types,id',
+        ]);
+
+        $item = new Item([
+            'name' => $data['name'], 
+            'price' => $data['price'], 
+            'stock' => $data['stock'], 
+            'description' => $data['description'], 
+            'gender_id' => $data['gender_id'], 
+            'type_id' => $data['type_id'], 
+            'supplier_id' => $supplier, 
+        ]);
+        $item->save();
+
+        return $item;
     }
 }

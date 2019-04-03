@@ -43,3 +43,5 @@ Route::apiResource('carts','CartController')->only(['index','show']);
 Route::apiResource('wishlists','WishlistController')->only(['index','show']);
 
 Route::get('/userdata','UserController@data');
+
+Route::post('/additem','SupplierController@createItem');

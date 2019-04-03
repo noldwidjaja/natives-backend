@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
-        foreach(range(0,9) as $index){
+        foreach(range(0,4) as $index){
             DB::table('users')->insert([ 
                 'id' => $faker->uuid,
                 'username' => $faker->username,

@@ -49,6 +49,6 @@ class Item extends Model
 
     public function wishlists()
     {
-        return $this->hasMany('App\wishlists');
+        return $this->hasMany('App\Wishlist');
     }
 }

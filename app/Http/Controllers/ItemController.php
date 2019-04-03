@@ -33,7 +33,7 @@ class ItemController extends Controller
     {
         $data = $request->json()->all();
         $request->validate([
-            'first_name' => 'required|string',
+            'name' => 'required|string',
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'description' => 'required|string',
@@ -43,7 +43,7 @@ class ItemController extends Controller
         ]);
 
         $item = new Item([
-            'first_name' => $data['first_name'], 
+            'name' => $data['name'], 
             'price' => $data['price'], 
             'stock' => $data['stock'], 
             'description' => $data['description'], 
@@ -84,7 +84,7 @@ class ItemController extends Controller
     {
         $data = $request->json()->all();
         $request->validate([
-            'first_name' => 'required|string',
+            'name' => 'required|string',
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'description' => 'required|string',
@@ -93,7 +93,7 @@ class ItemController extends Controller
             'supplier_id' => 'required|uuid|exists:suppliers,id',
         ]);
 
-        $item->first_name = $data['first_name']; 
+        $item->name = $data['name']; 
         $item->price = $data['price']; 
         $item->stock = $data['stock']; 
         $item->description = $data['description']; 
